@@ -6,12 +6,14 @@
 	<title>Document</title>
 	<style>
 		main{
+			min-height: 100vh;
 			background-color: whitesmoke;
 		}
 		ul{
 			display: flex;
-			flex-direction: column;
-			padding: 20px 20px 100px;
+			/* flex-direction: column; */
+			/* padding: 20px 20px 100px; */
+			/* overflow: hidden; */
 		}
 		li{
 			width: 25px;
@@ -20,14 +22,18 @@
 			font-size: 20px;
 			font-weight: bold;
 			padding: 40px;
-			opacity: 0;
+			transform-origin: bottom;
+			transform: rotateX(90deg);
+			/* opacity: 0; */
 		}
 		li.show{
-			transition-duration: 0.5s;
+			transition-duration: 1s;
+			transform: rotateX(0);
 			opacity: 1;
 		}
 		li+li{
-			margin-top: 10px;
+			/* margin-top: 10px; */
+			margin-left: 10px;
 		}
 		.orange{background-color: orange;}
 		.green{background-color: greenyellow;}
@@ -61,6 +67,7 @@
 				let $this = $(this);
 				let delay = 100;
 				console.log('this = ' + this);
+				// $this.delay(i * delay).fadeIn(400);
 				$this.delay(i * delay).queue(function(next){
 					$this.addClass('show');
 					next();
@@ -68,12 +75,36 @@
 			})
 		};
 
+		function scrollFadeIn(){
+			$('.js-fadeIn').each(function(i){
+				const WINDOW_HEIGHT = $(window).scrollTop();
+				console.log('window_height =' + WINDOW_HEIGHT);
+				const TARGET_HEIGHT = $(this).offset().top - 300;
+				console.log('target_height =' + TARGET_HEIGHT);
+				let $target = [];
+				if( WINDOW_HEIGHT > TARGET_HEIGHT){
+					$(this).addClass('in');
+					$('.js-fadeIn.in').each(function(i){
+						$(this).delay(i * 100).queue(function(next){
+							$(this).addClass('show');
+							next();
+						})
+					})
+				}
+			})
+		}
+
+		$(window).on('scroll', function(){
+			scrollFadeIn();
+		})
+
 		$('#click').on('click', function(){
 			fadeIn();
 			return false;
 		});
 
 		$('#hide').on('click', function(){
+			// $('.js-fadeIn').fadeOut();
 			$('.js-fadeIn').removeClass('show');
 			return false;
 		});
