@@ -1,0 +1,126 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/destyle.css">
+  <style>
+    /* body.fixed{
+      overflow: hidden;
+    } */
+    main{
+      background-color: whitesmoke;
+      font-weight: bold;
+    }
+    .wrapper{
+      overflow-x: hidden;
+      position: relative;
+    }
+    nav{
+      width: 70%;
+      background-color: rgba(1, 12, 5, 0.9);
+      font-size: 20px;
+      line-height: 1.8;
+      transition-duration: .7s;
+      position: absolute;
+      top: 0;
+      right: -100%;
+    }
+    nav.open{
+      height: 100vh;
+      right: 0;
+      transition-duration: .7s;
+      overflow-y: scroll;
+    }
+    ul{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      overflow-y: scroll;
+      padding: 50px;
+    }
+    li a{
+      display: block;
+      color: snow;
+      padding: 40px 0;
+    }
+    .content{
+      background-image: url(./img/img_01.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      color: #E8D7D5;
+      font-size: 24px;
+      padding: 20px;
+    }
+    .content p{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80%;
+      height: 100px;
+      margin: 40px auto 0;
+      border: 3px solid #E8D7D5;
+    }
+    .content .click{
+      background-color: #E8D7D5;
+      padding: 15px 20px;
+    }
+    .content .click span{
+      background-image: url(./img/img_01.jpg);
+      -webkit-background-clip: text;
+      color: transparent;
+      font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="wrapper">
+      <nav id="nav">
+        <ul>
+          <li><a href="">めにゅー１</a></li>
+          <li><a href="">めにゅー２</a></li>
+          <li><a href="">めにゅー３</a></li>
+          <li><a href="">めにゅー４</a></li>
+          <li><a href="">めにゅー５</a></li>
+          <li><a href="">めにゅー６</a></li>
+          <li><a href="">めにゅー７</a></li>
+          <li><a href="">めにゅー８</a></li>
+          <li><a href="">めにゅー９</a></li>
+          <li><a href="">めにゅー０</a></li>
+        </ul>
+      </nav>
+      <div class="content">
+        <p class="click" id ="click"><span>click!!</span></p>
+        <p>some contents</p>
+        <p>some contents１</p>
+        <p>some contents２</p>
+        <p>some contents３</p>
+        <p>some contents４</p>
+        <p>some contents５</p>
+        <p>some contents６</p>
+        <p>some contents７</p>
+        <p>some contents８</p>
+        <p>some contents９</p>
+      </div>
+    </div>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="js/bodyScrollLock.min.js"></script>
+  <script>
+    const btn = document.getElementById('click');
+    const nav = document.getElementById('nav');
+    btn.addEventListener('click' , () => {
+      if(nav.classList.contains('open')){
+        nav.classList.remove('open');
+        bodyScrollLock.clearAllBodyScrollLocks();
+      } else {
+        nav.classList.add('open');
+        bodyScrollLock.disableBodyScroll(nav);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+body{
+}
+h1{
+  color: whitesmoke;
+  position: relative;
+  z-index: 10;
+}
+.planets{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+ul{
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 300px 50px;
+}
+.planet{
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  list-style: none;
+  position: relative;
+  z-index: 10;
+}
+.planet:hover{
+  opacity: 0.8;
+  transform: scale(1.1);
+  transition-duration: 0.7s;
+}
+.planet + .planet{
+  margin-left: 100px;
+}
+.planet_01{
+  background-color: rosybrown;
+}
+.planet_02{
+  background-color: royalblue;
+}
+.planet_03{
+  background-color: salmon;
+}
+
+#rocketwagon-canvas{
+  bottom: 0;
+  right: 0;
+}
+
+#starField{
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
